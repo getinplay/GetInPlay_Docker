@@ -1,0 +1,493 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  font-family: "Work Sans", serif;
+    background-color: #ffffff;
+    margin: 0;
+}
+
+.body_css {
+    padding: 25px;
+}
+#messageOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+#messagePopup {
+    display: none;
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#messagePopup button:first-of-type:hover {
+    background: #0056b3;
+}
+
+#messagePopup button:last-of-type {
+    background: #28a745;
+}
+
+#messagePopup button:last-of-type:hover {
+    background: #218838;
+}
+
+#messagePopup button:first-of-type {
+    background: #007bff;
+}
+
+#messagePopup p {
+    margin-bottom: 20px;
+}
+
+#messagePopup button {
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#messagePopup button:hover {
+    background: #0056b3;
+}
+
+.cancel-btn {
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancel-btn:hover {
+    background-color: #cc0000;
+}
+
+/* Add this to your existing CSS */
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); /* For Safari */
+    z-index: 9998;
+    display: none;
+}
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    display: none;
+}
+
+.loader-message {
+    position: fixed;
+    top: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 9999;
+    display: none;
+    text-align: center;
+    width: 100%;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Disable pointer events when loader is active */
+body.loader-active {
+    pointer-events: none;
+}
+
+body.loader-active * {
+    cursor: wait !important;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #4A5BE6;
+    text-align: center;
+    margin-top: 45px;
+    font-weight: bold;
+    
+}
+
+/* Date Picker Styles */
+.date-picker {
+    display: flex;
+    height: 76px;
+    width: max-content;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: rgb(242, 242, 242);
+    border-radius: 15px;
+}
+
+.date-picker button {
+    width: 60px;
+    padding: 5px 5px; /* Reduced padding to make buttons smaller */
+    border-radius: 15px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: bold;
+    text-align: center;
+    line-height: 0.37; /* Adjusted line-height for better spacing */
+   /* Allow height to adjust based on content */
+     /* Ensure buttons have a minimum width */
+}
+
+.date-picker button.active {
+    background-color: #4A5BE6;
+    color: white;
+    height: 76px;
+    z-index: 1000;
+    box-shadow: 0px 0px 2px 2px gray;
+}
+
+.date-picker button:hover {
+    background-color: #1630f0;
+    color: white;
+    box-shadow: 2px 2px 2px 2px gray;
+}
+
+.date-large {
+    font-size: 1.5rem; /* Larger font size for the date */
+    font-weight: bold;
+    display: block; /* Ensure it takes full width */
+    margin: 5px 0; /* Equal margin for top and bottom */
+}
+
+/* Smaller font size for month and year */
+.date-picker button small {
+    font-size: 0.8rem; /* Smaller font size for month and year */
+    display: block; /* Ensure they take full width */
+    margin: 5px 0; /* Equal margin for top and bottom */
+}
+
+/* Filter Buttons Styles */
+.filter-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+.durationfltr{
+    background-color: rgb(242, 242, 242);
+    border-radius: 15px;
+    
+}
+.mrngfltr{
+    background-color: rgb(242, 242, 242);
+    border-radius: 15px;
+    
+}
+a{
+    text-decoration:none;
+}
+.filter-buttons button {
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    /* transition: background-color 0.3s ease, color 0.3s ease; */
+    font-weight: bold;
+}
+
+.filter-buttons button.active {
+    background-color: #4A5BE6;
+    color: white;
+    box-shadow: 0px 0px 2px 2px gray;
+}
+
+.filter-buttons button:hover {
+    background-color: #1630f0;
+    color: white;
+    box-shadow: 0px 0px 2px 2px gray;
+}
+
+/* Slots Container Styles */
+.slots-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Fixed 6 buttons per line */
+    gap: 8px;
+    margin-bottom: 40px;
+}
+
+p{
+    margin: 0px;
+}
+
+.slot-card {
+    background-color: white;
+    border: 2.9px solid #E5E5E5;
+    border-radius: 10px;
+    height: 50px; /* Adjust height as needed */
+    display: flex; /* Enables flexbox */
+    align-items: center; /* Centers vertically */
+    justify-content: center; /* Centers horizontally */
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.slot-card.available:hover {
+    background-color: #4A5BE6;
+    color: white;
+}
+
+.slot-card.booked {
+    background-color: #6c757d;
+    border-color: #E5E5E5;
+    color: white;
+    cursor: not-allowed;
+}
+
+/* Booked Slots Details Section */
+.booked-details {
+    margin-top: 40px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.booked-details h2 {
+    color: #4A5BE6;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.booked-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.booked-table th, .booked-table td {
+    padding: 12px;
+    border-bottom: 1px solid #E5E5E5;
+    text-align: left;
+}
+
+.booked-table th {
+    background-color: #4A5BE6;
+    color: white;
+}
+
+/* Popup Styles */
+#popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 300px;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+#popup h3 {
+    color: #122ae2;
+    margin-bottom: 15px;
+}
+
+#popup input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px;
+}
+
+#popup button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #122ae2;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#popup button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+#popup button:hover {
+    background-color: #4A5BE6;
+}
+
+#closePopup {
+    background-color: #6c757d;
+}
+
+#closePopup:hover {
+    background-color: #565f66;
+}
+
+/* Responsive Styles for Tablet */
+@media (max-width: 1024px) {
+    .slots-container {
+        grid-template-columns: repeat(4, 1fr); /* 4 buttons per line for tablets */
+    }
+
+    .date-picker {
+        display: flex;
+    }
+
+    .date-picker button {
+        min-width: 70px; /* Slightly smaller buttons for tablets */
+    }
+
+    .date-large {
+        font-size: 2.5rem; /* Slightly smaller font size for tablets */
+    }
+
+    .slot-card {
+        font-size: 16px; /* Slightly smaller font size for tablets */
+    }
+}
+
+/* Responsive Styles for Mobile */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem; /* Smaller font size for mobile */
+    }
+    
+    .date-picker {
+        align-items: center;
+    }
+
+    .date-picker button {
+        width: 80px;
+      
+    }
+
+    .filter-buttons {
+        justify-content: space-between; /* Center filter buttons on mobile */
+    }
+    .durationfltr a button{
+        width: 80px;
+    }
+    .mrngfltr a button{
+        width: 120px;
+    }
+
+    .durationfltr{
+        height: max-content;
+    }
+    .mrngfltr,.durationfltr{
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+    }
+    .slots-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 buttons per line for mobile */
+    }
+
+    .slot-card {
+        font-size: 14px; /* Smaller font size for mobile */
+    }
+
+    .booked-details {
+        padding: 10px; 
+        margin-bottom: 10px;/* Reduce padding for mobile */
+    }
+
+    .booked-table {
+        display: none; /* Hide table on mobile */
+    }
+
+    .booked-cards {
+        display: block; /* Show cards on mobile */
+    }
+
+    .booked-card {
+        background: white;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .booked-card p {
+        margin: 5px 0;
+    }
+
+    .booked-card p strong {
+        display: inline-block;
+        width: 80px;
+    }
+}
+
+/* Booked Cards Styles (for mobile) */
+.booked-cards {
+    display: none; /* Hide cards by default */
+}
+
+@media (max-width: 768px) {
+    .booked-cards {
+        display: block; /* Show cards on mobile */
+    }
+
+    .booked-table {
+        display: none; /* Hide table on mobile */
+    }
+}

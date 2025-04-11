@@ -1,0 +1,5 @@
+{
+  "css.customData": [".vscode/tailwind.json"],
+  "cSpell.words": ["getinplay", "njsproj", "ntvs"],
+  "postman.settings.dotenv-detection-notification-visibility": false
+}

@@ -1,0 +1,370 @@
+/* Basic Reset */
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: "Work Sans", serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Form Container */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 70px auto;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid #E5E5E5;
+   
+}
+
+/* Ensure the parent container allows space for fixed-width elements */
+.mid {
+    display: flex;
+    justify-content: space-between; 
+    gap: 2rem;
+    width: 100%;
+}
+
+#gameForm {
+    margin-top: 100px;
+    text-align: center;
+}
+
+#formTitle {
+    font-size: 24px;
+    color: #4A5BE6;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+.form-group input[type="text"]:focus {
+    border: 2px solid #000000;
+}
+
+h3{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.error-message {
+    color: #d32f2f;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.btn.btn-add {
+  background-color: #4A5BE6;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  width: 50%;
+  cursor: pointer;
+  font-size: 16px;
+}
+.left1, .right1 {
+   
+    width: 45%; /* Adjust to your desired fixed width */
+    flex-shrink: 0; /* Prevent shrinking */
+    height: 100%;
+}
+.btn.btn-add:hover {
+  background-color: #142bda;
+  color: white;
+}
+
+.btn.btn-cancel {
+  background-color: #ccc;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  width: 50%;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn.btn-cancel:hover {
+  background-color: #b0b0b0;
+}
+
+/* Slot Filter Buttons */
+
+.slot-options {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.slot-filter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.slot-filter button {
+    background-color: lightgrey;
+    /* color: #4A5BE6; */
+    font-weight: bold;
+    width: fit-content;
+    border: 2px solid #E5E5E5;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.slot-filter button.active {
+    background-color: lightgray;
+    
+}
+
+/* Slot Sections */
+.time-slot-section {
+    margin-bottom: 20px;
+    background-color: #fafafa;
+    border: 1px solid #E5E5E5;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.slot-header {
+    /* background-color: #4A5BE6; */
+    background-color: lightgray;
+    /* color: #fff; */
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.slot-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    margin-top: 15px;
+}
+
+.slot-item {
+    margin: 5px;
+    font-size: 1rem;
+}
+
+.slot-item input {
+    margin-right: 8px;
+}
+
+/* Selected Slots */
+.selected-slots {
+    margin-top: 20px;
+    width: 75%;
+}
+.selected-slot i{
+  color: royalblue;
+  cursor: pointer;
+}
+span{
+  color: red;
+}
+
+/* Styling for the selected slots container */
+
+#selected-list {
+    display: flex;
+    flex-flow: left;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: .5rem;
+    /* width: 120%; */
+    /* background-color: #fff; */
+    padding: 10px;
+    overflow-y: auto; /* Allows scrolling if content exceeds max height */
+}
+
+/* Each individual selected slot */
+.selected-slot {
+    padding: 8px 10px;
+    text-align: center;
+    border: 2px solid #747474;
+    border-radius: 10px;
+    width: 164px;
+    font-size: 1rem;
+    font-weight: bold; /* Optional: makes text bold */
+}
+
+/* Hover effect for selected slots */
+.selected-slot:hover {
+    background-color: #9ca4e5; /* Darker red when hovered */
+}
+
+/* Optional: Add a shadow effect to the selected slot */
+.selected-slot {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+@media (max-width: 1024px) {
+    .form-container {
+      width: 95%;
+      padding: 15px;
+    }
+  
+    .mid {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .left1,
+    .right1 {
+      width: 100%;
+    }
+  
+    .form-group {
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+  
+    .slot-filter button {
+      margin: 5px;
+      flex: 1 1 45%; /* Allow buttons to wrap and take 45% width */
+    }
+  
+    .selected-slots {
+      width: 90%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    #formTitle {
+      font-size: 1.5rem;
+    }
+  
+    .form-group label {
+      font-size: 1rem;
+    }
+  
+    .form-group input {
+      font-size: 0.9rem;
+    }
+  
+    .slot-item {
+      font-size: 0.9rem;
+    }
+  
+    .selected-slot {
+      font-size: 0.9rem;
+    }
+  
+    .remove-slot {
+      font-size: 1rem;
+    }
+  
+    .btn {
+      font-size: 1rem;
+      padding: 8px 16px;
+    }
+  }
+  @media (max-width: 621px) {
+    #gameForm
+    {
+      margin-top: 60px;
+    }
+  }
+  @media (max-width: 480px) {
+    .slot-header h3{
+      font-size: 1rem;
+    }
+    .form-container {
+      width: 100%;
+      padding: 10px;
+    }
+    #formTitle {
+      font-size: 1.2rem;
+    }
+  
+    .form-group label {
+      font-size: 0.9rem;
+    }
+    
+    .slot-filter button{
+      font-size: .9rem;
+      width: 90px;
+      text-align: center;
+      
+    }
+    .form-group input {
+      font-size: 0.8rem;
+    }
+  
+    .slot-item {
+      font-size: 0.8rem;
+    }
+  
+    .selected-slot {
+      font-size: 0.8rem;
+    }
+  
+    .remove-slot {
+      font-size: 0.9rem;
+    }
+  
+    .btn {
+      font-size: 0.9rem;
+      padding: 6px 12px;
+    }
+    #selected-list{
+      width: 90%;
+    }
+    .slot-filter button {
+      flex: 1 1 100%; /* Full width for buttons on small screens */
+    }
+  }

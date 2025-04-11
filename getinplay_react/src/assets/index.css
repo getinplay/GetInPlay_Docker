@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-xs: 30rem;
+  --breakpoint-2xs: 20rem;
+}
+
+@layer utilities {
+  .custom-text-outline {
+    text-shadow: 2px 2px 4px rgb(0, 0, 0);
+  }
+}
+
+@layer base {
+  ul,
+  ol {
+    list-style: revert;
+  }
+}
+
+.subtitle {
+  @apply sm:text-2xl font-bold text-xl;
+}
+
+@layer base {
+  .Toastify__toast {
+    font-family: "Outfit", sans-serif !important;
+  }
+}
+
+body {
+  @apply text-center font-[Outfit] relative;
+}
+
+.swiper-pagination-bullet-active {
+  @apply !bg-white shadow-[0px_0px_5px_rgb(255,255,255)] scale-[1.2];
+}
+
+.required:after {
+  content: " *";
+  @apply text-red-400;
+}
+
+.navbarlink-wrapper:hover .navbarlink {
+  @apply text-[#1529be];
+}
+
+.navbarlink-wrapper:hover::after {
+  @apply bg-[#1529be] opacity-0;
+}
+
+.navbarlink-wrapper:focus {
+  @apply outline-none border-none;
+}
+
+.active.navbarlink-wrapper .navbarlink {
+  @apply font-bold text-[#4A5BE6];
+}
+
+.navbarlink-wrapper::after {
+  content: "";
+  @apply w-full h-[3px] bg-[#4A5BE6] block relative rounded-[10px] -top-[3px] opacity-0 transition-all duration-300;
+}
+
+.active.navbarlink-wrapper::after {
+  @apply opacity-100;
+}
+
+.active.navbarlink-wrapper:hover .navbarlink {
+  @apply text-[#1529be];
+}

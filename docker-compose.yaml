@@ -1,0 +1,37 @@
+name: getinplay
+
+services:
+
+  frontend:
+    build: ./getinplay_react
+    container_name: getinplay_react_frontend
+    ports:
+      - 5173:5173
+    restart: unless-stopped
+
+  php-env:  
+    build: ./final_project
+    volumes:
+      - ./final_project/final_project:/var/www/html
+      # - ./sites.conf:/etc/apache2/sites-available/000-default.conf
+    ports:
+      - 5001:80
+      
+  mariadb_db:
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: getinplay
+    volumes:
+      - ./final_project/db/getinplay.sql:/docker-entrypoint-initdb.d/getinplay.sql
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    restart: always
+    ports:
+      - 8082:80
+    environment:
+      PMA_HOST: mariadb_db
+      PMA_USER: root
+      PMA_PASSWORD: root

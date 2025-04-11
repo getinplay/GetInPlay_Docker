@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  font-family: "Work Sans", serif;
+    background-color: white;
+    color: #333;
+}
+
+.cen {
+    display: flex;
+    gap: 4rem;
+}
+
+/* Form Container */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin: 100px auto;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid #E5E5E5;
+}
+
+/* Form Title */
+#formTitle {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #4A5BE6;
+    font-weight: bold;
+}
+
+.left1,
+.right1 {
+    width:45%;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 20px;
+}
+
+span {
+    color: red;
+}
+
+/* Label */
+label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Input focus effect */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus {
+    border: 2px solid #000000;
+}
+
+/* Gender options displayed in a single line */
+.gender-options {
+    display: flex;
+    align-items: center;
+}
+.gen{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.gen label{
+    margin-bottom: 0;
+}
+.gender-options div {
+    display: flex;
+    margin-right: 20px;
+}
+
+.gender-options input[type="radio"] {
+    margin-right: 5px;
+}
+/* Error Messages */
+.error-message {
+    color: #d32f2f;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Submit Button */
+.btn-add {
+    background-color: #4A5BE6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    width: 50%;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-add:hover {
+    background-color: #142bda;
+    color: white;
+}
+
+/* Cancel Button */
+.btn-cancel {
+    background-color: #ccc;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    width: 50%;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-cancel:hover {
+    background-color: #b0b0b0;
+}
+
+/* Form Actions Container */
+.form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 20px;
+}
+
+/* Hover Effects for Buttons */
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* Input Focus Effects */
+input:focus,
+select:focus {
+    border-color: #E5E5E5;
+    outline: none;
+}
+
+/* Responsive Design for Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+    .form-container {
+        width: 60%;
+        height: auto;
+        padding: 15px;
+    }
+
+    .cen {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .left1,
+    .right1 {
+        width: 100%;
+    }
+
+}
+
+/* Responsive Design for Mobile (up to 767px) */
+@media (max-width: 767px) {
+    .form-container {
+        width: 60%;
+        margin-top: 70px;
+        padding: 10px;
+    }
+
+    #formTitle {
+        font-size: 1.5rem;
+    }
+    
+
+    .form-actions {
+        gap: 1rem;
+    }
+}
+
+/* Responsive Design for Small Mobile (up to 480px) */
+@media (max-width: 480px) {
+    .form-container {
+        width:90%;
+        margin-top: 70px;
+        padding: 10px;
+    }
+
+    #formTitle {
+        font-size: 1.2rem;
+    }
+
+    
+
+    .form-actions {
+        gap: 0.5rem;
+    }
+}
