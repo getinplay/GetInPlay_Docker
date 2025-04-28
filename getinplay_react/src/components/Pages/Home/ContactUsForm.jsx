@@ -94,7 +94,7 @@ function ContactUsForm() {
                 type='text'
                 id='name'
                 name='name'
-                placeholder='TempName'
+                placeholder='John Doe'
                 className='bg-gray-200 w-full font-medium text-gray-600 border-none outline-none rounded-lg px-3 py-1'
               />
               <p className='select-none text-red-500 text-sm px-2 font-medium'>
@@ -116,7 +116,7 @@ function ContactUsForm() {
                 type='tel'
                 id='phone'
                 name='phone'
-                placeholder='9123456789'
+                placeholder='+91 9123456789'
                 className='bg-gray-200 w-full font-medium text-gray-600 border-none outline-none rounded-lg px-3 py-1'
               />
               <p className='select-none text-red-500 text-sm px-2 font-medium'>
@@ -139,7 +139,7 @@ function ContactUsForm() {
               type='email'
               id='email'
               name='email'
-              placeholder='tempmail@xmail.com'
+              placeholder='johndoe@gmail.com'
               className='bg-gray-200 w-full font-medium text-gray-600 border-none outline-none rounded-lg px-3 py-1'
             />
             <p className='select-none text-red-500 text-sm px-2 font-medium'>

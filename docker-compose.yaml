@@ -4,9 +4,8 @@ services:
 
   frontend:
     build: ./getinplay_react
-    container_name: getinplay_react_frontend
     ports:
-      - 5173:5173
+      - 80:5173
     restart: unless-stopped
 
   php-env:  
@@ -18,11 +17,11 @@ services:
       - 5001:80
       
   mariadb_db:
-    image: mariadb:latest
+    image: mariadb:11.7-noble
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: getinplay
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: getinplay
     volumes:
       - ./final_project/db/getinplay.sql:/docker-entrypoint-initdb.d/getinplay.sql
 

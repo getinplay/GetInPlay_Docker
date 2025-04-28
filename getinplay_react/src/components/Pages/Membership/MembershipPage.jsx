@@ -51,7 +51,9 @@ function MembershipPage() {
   ];
 
   const fetchPlan = async () => {
-    if (!document.cookie) {
+    if (
+      !document.cookie.split("; ").find((row) => row.startsWith("authToken="))
+    ) {
       return;
     }
     const res = await axios.post(
@@ -72,7 +74,9 @@ function MembershipPage() {
   };
 
   const handleUpgradeClick = (planId) => {
-    if (!document.cookie) {
+    if (
+      !document.cookie.split("; ").find((row) => row.startsWith("authToken="))
+    ) {
       ConfirmLogin();
       return;
     }

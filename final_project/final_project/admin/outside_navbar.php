@@ -26,7 +26,7 @@
         <div class="profile-popup">
             <a href="../admin_profile.php"><i class="fa-solid fa-user"></i> Profile</a>
             <a href="../admin_history.php"><i class="fa-solid fa-calendar-days"></i> Bookings</a>
-            <a href="../admin_login.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            <a href="../index.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
         </div>
     </div>
    
@@ -44,7 +44,7 @@
         <div class="profile-popup">
             <a href="../admin_profile.php"><i class="fa-solid fa-user"></i> Profile</a>
             <a href="../admin_history.php"><i class="fa-solid fa-calendar-days"></i> Bookings</a>
-            <a href="../admin_login.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            <a href="../index.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
         </div>
     </div>
 </nav>

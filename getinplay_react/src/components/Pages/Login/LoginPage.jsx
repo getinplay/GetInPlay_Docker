@@ -135,10 +135,10 @@ function LoginPage() {
               </p>
             </div>
 
-            {/* <div className="w-full flex justify-end select-none px-1">
+            {/* <div className='w-full font-normal flex justify-end select-none px-1'>
               <Link
                 to={"/forgot-password"}
-                className="text-[#4A5BE6] hover:text-blue-900 text-end"
+                className='text-[#4A5BE6] hover:text-blue-900 text-end'
                 viewTransition>
                 Forgot password?
               </Link>

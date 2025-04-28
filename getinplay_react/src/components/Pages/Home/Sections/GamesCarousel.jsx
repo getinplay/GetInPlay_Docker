@@ -46,9 +46,13 @@ function GamesCarousel({ games }) {
             games.map((game) => (
               <SwiperSlide key={game.id} className='rounded-xl overflow-hidden'>
                 <GamesCarouselCard
-                  src={`${import.meta.env.VITE_API_URL}/admin/${
+                  src={
                     game.slot_image
-                  }`}
+                      ? import.meta.env.VITE_API_URL +
+                        "/admin/" +
+                        game.slot_image
+                      : "not-found"
+                  }
                   name={game.name}
                   gameId={game.id}
                 />

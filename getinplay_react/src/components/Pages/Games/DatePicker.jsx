@@ -16,7 +16,9 @@ function DatePicker({ selectedDate, setSelectedDate }) {
     date.toLocaleDateString("en-US", { month: "short" });
 
   const fetchPlan = async () => {
-    if (!document.cookie) {
+    if (
+      !document.cookie.split("; ").find((row) => row.startsWith("authToken="))
+    ) {
       return;
     }
     const res = await axios.post(
