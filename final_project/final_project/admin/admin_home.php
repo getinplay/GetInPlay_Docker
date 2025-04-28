@@ -280,7 +280,7 @@ $todaybooking = $row['count'];
             // Function to animate number count
             // Function to animate number count
             function animateCount(element, endValue) {
-                let startValue = 0;
+                let startValue = -1;
                 const duration = 2000; // 2 seconds duration
                 const stepTime = Math.max(Math.floor(duration / endValue), 50); // Prevent too fast updates
 
