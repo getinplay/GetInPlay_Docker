@@ -15,9 +15,6 @@ services:
 
   php-env:  
     build: ./final_project
-    volumes:
-      - ./final_project/final_project:/var/www/html
-      # - ./sites.conf:/etc/apache2/sites-available/000-default.conf
     ports:
       - 5001:80
     restart: unless-stopped
