@@ -69,7 +69,60 @@ function GameSlots() {
       return durationMatch && dayMatch;
     });
   };
+  const fetchAllSlots = async () => {
+    let bookedSlots;
+    let allSlots;
+    let filter;
+    const date = selectedDate.toJSON().slice(0, 10).replace(/-/g, "/");
+    const res = await axios.post(
+      `${import.meta.env.VITE_API_URL}/Api/filter_time.php`,
+      { id: id, date: date },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    allSlots = res.data.slots;
+    filter = res.data.filter;
 
+    const res2 = await axios.post(
+      `${import.meta.env.VITE_API_URL}/Api/book_slots.php`,
+      { game_id: id, date: date },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    bookedSlots = res2.data.booked_slots.map((slot) => slot.slot);
+    let tempTimeSlots = [];
+    allSlots.forEach((slot, index) => {
+      if (bookedSlots.includes(slot)) {
+        tempTimeSlots.push({
+          time: slot,
+          isBooked: true,
+          filter: filter[index],
+          dayFilter: assignDayFilter(slot),
+        });
+      } else {
+        tempTimeSlots.push({
+          time: slot,
+          isBooked: false,
+          filter: filter[index],
+          dayFilter: assignDayFilter(slot),
+        });
+      }
+    });
+    setOriginalSlots(tempTimeSlots);
+    setTimeSlots(
+      filterSlots(
+        tempTimeSlots,
+        filterOptions[selected],
+        filterOptionsDay[selectedDayFilter]
+      )
+    );
+  };
   useEffect(() => {
     const fetchTerms = async () => {
       const res = await axios.get(
@@ -77,60 +130,7 @@ function GameSlots() {
       );
       setTerms(res.data);
     };
-    const fetchAllSlots = async () => {
-      let bookedSlots;
-      let allSlots;
-      let filter;
-      const date = selectedDate.toJSON().slice(0, 10).replace(/-/g, "/");
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/Api/filter_time.php`,
-        { id: id, date: date },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      allSlots = res.data.slots;
-      filter = res.data.filter;
 
-      const res2 = await axios.post(
-        `${import.meta.env.VITE_API_URL}/Api/book_slots.php`,
-        { game_id: id, date: date },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      bookedSlots = res2.data.booked_slots.map((slot) => slot.slot);
-      let tempTimeSlots = [];
-      allSlots.forEach((slot, index) => {
-        if (bookedSlots.includes(slot)) {
-          tempTimeSlots.push({
-            time: slot,
-            isBooked: true,
-            filter: filter[index],
-            dayFilter: assignDayFilter(slot),
-          });
-        } else {
-          tempTimeSlots.push({
-            time: slot,
-            isBooked: false,
-            filter: filter[index],
-            dayFilter: assignDayFilter(slot),
-          });
-        }
-      });
-      setOriginalSlots(tempTimeSlots);
-      setTimeSlots(
-        filterSlots(
-          tempTimeSlots,
-          filterOptions[selected],
-          filterOptionsDay[selectedDayFilter]
-        )
-      );
-    };
     const checkLogin = async () => {
       const res = await axios.post(
         `${import.meta.env.VITE_API_URL}/Api/decode.php`,
@@ -162,6 +162,13 @@ function GameSlots() {
       checkLogin();
     }
   }, [selectedDate, refreshPage, selected, selectedDayFilter]);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      fetchAllSlots();
+    }, 5000);
+
+    return () => clearInterval(intervalId); // clean up on unmount
+  }, [selectedDate, selected, selectedDayFilter]);
 
   return (
     <div className='w-full xs:w-[90vw] md:w-[80vw] p-2 xs:p-5 flex flex-col gap-5'>
