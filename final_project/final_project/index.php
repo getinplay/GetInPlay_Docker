@@ -115,7 +115,7 @@
             // Check if username and password are correct
             if (username === 'admin' && password === 'admin') {
                 // Redirect to the next page (change 'nextPage.html' to the desired URL)
-                window.location.href = 'admin_home.php'; // Replace with your next page URL
+                window.location.href = './admin/admin_home.php'; // Replace with your next page URL
             } else {
                 // Show error message if credentials are incorrect
                 errorMessage.textContent = 'Invalid username or password.';
