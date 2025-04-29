@@ -238,7 +238,6 @@ function ForgotPassword() {
           </p>
         </form>
       </div>
-      <ToastContainer />
     </>
   );
 }
