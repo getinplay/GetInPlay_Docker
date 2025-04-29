@@ -62,7 +62,7 @@ function LoginPage() {
           pauseOnFocusLoss: false,
         });
       }
-    } catch (error) {
+    } catch {
       toast.error("An error occurred. Please try again.", {
         position: "top-center",
         autoClose: 3000,
@@ -151,7 +151,7 @@ function LoginPage() {
             LOGIN
           </button>
           <p className='text-gray-500'>
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link to={"/signup"} className='cursor-pointer text-[#4A5BE6]'>
               Sign Up
             </Link>

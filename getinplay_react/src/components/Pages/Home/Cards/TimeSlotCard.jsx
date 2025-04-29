@@ -1,4 +1,10 @@
-import React, { useState } from "react";
+import PropTypes from "prop-types";
+
+TimeSlotCard.propTypes = {
+  children: PropTypes.node.isRequired,
+  isBooked: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 
 function TimeSlotCard({ children, isBooked, onClick }) {
   // const [hovered, setHovered] = useState(false);

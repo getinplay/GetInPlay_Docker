@@ -1,8 +1,7 @@
-import React from "react";
-import { toast, Bounce } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function ConfirmLoginToast({ closeToast }) {
   const navigate = useNavigate();
@@ -23,18 +22,8 @@ function ConfirmLoginToast({ closeToast }) {
   );
 }
 
-function showConfirmLoginToast() {
-  toast(({ closeToast }) => <ConfirmLoginToast closeToast={closeToast} />, {
-    toastId: "login",
-    position: "top-right",
-    autoClose: 2000,
-    hideProgressBar: true,
-    closeOnClick: false,
-    pauseOnHover: true,
-    draggable: false,
-    theme: "light",
-    transition: Bounce,
-  });
-}
+ConfirmLoginToast.propTypes = {
+  closeToast: PropTypes.func.isRequired,
+};
 
-export default showConfirmLoginToast;
+export default ConfirmLoginToast;

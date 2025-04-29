@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
@@ -13,13 +13,13 @@ function ProfilePage() {
     username: "",
     membership_id: "",
   });
-  const [originalData, setOriginalData] = useState({
-    full_name: "",
-    email: "",
-    phone_no: "",
-    username: "",
-    membership_id: "",
-  });
+  // const [originalData, setOriginalData] = useState({
+  //   full_name: "",
+  //   email: "",
+  //   phone_no: "",
+  //   username: "",
+  //   membership_id: "",
+  // });
   const [editMode, setEditMode] = useState({
     full_name: false,
     email: false,
@@ -44,15 +44,6 @@ function ProfilePage() {
       3: "Gold",
     };
     return memberships[id] || "Standard";
-  };
-
-  // Check if data has been modified
-  const isDataModified = () => {
-    return (
-      userData.full_name !== originalData.full_name ||
-      userData.email !== originalData.email ||
-      userData.phone_no !== originalData.phone_no
-    );
   };
 
   // Fetch user data on component mount
@@ -85,7 +76,7 @@ function ProfilePage() {
 
         if (response.data.success) {
           setUserData(response.data.data);
-          setOriginalData(response.data.data); // Store original data for comparison
+          // setOriginalData(response.data.data); // Store original data for comparison
         } else {
           toast.error(response.data.message || "Failed to fetch user data.", {
             pauseOnHover: false,
@@ -236,9 +227,9 @@ function ProfilePage() {
         });
 
         // Update original data to match current data
-        setOriginalData({
-          ...userData,
-        });
+        // setOriginalData({
+        //   ...userData,
+        // });
 
         // Reset all edit modes
         setEditMode({

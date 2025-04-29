@@ -10,8 +10,8 @@ function ForgotPassword() {
   const [errors, setErrors] = useState({ email: "", otp: "" });
   const [showOtpInput, setShowOtpInput] = useState(false);
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  // const [newPassword, setNewPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
 
   function validateFields() {
     let tempErrors = { email: "" };
@@ -100,7 +100,7 @@ function ForgotPassword() {
           pauseOnFocusLoss: false,
         });
       }
-    } catch (error) {
+    } catch {
       toast.error("An error occurred. Please try again.", {
         position: "top-center",
         autoClose: 3000,
@@ -148,7 +148,7 @@ function ForgotPassword() {
           pauseOnFocusLoss: false,
         });
       }
-    } catch (error) {
+    } catch {
       toast.error("An error occurred. Please try again.", {
         position: "top-center",
         autoClose: 3000,

@@ -162,7 +162,7 @@ function SignUpPage() {
           pauseOnFocusLoss: false,
         });
       }
-    } catch (error) {
+    } catch {
       toast.error("An error occurred. Please try again.", {
         position: "top-center",
         autoClose: 3000,

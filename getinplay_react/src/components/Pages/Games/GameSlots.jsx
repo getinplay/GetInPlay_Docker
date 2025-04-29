@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import TimeSlotCard from "../Home/Cards/TimeSlotCard";
 import ButtonGroupBtn from "./ButtonGroupBtn";
 import DatePicker from "./DatePicker";
 import axios from "axios";
-import ConfirmLogin from "../../ConfirmLogin";
+import ConfirmLoginToast from "../../ConfirmLoginToast";
 import BookGamePopup from "./BookGamePopup";
 import FeedBackForm from "../../FeedBackForm";
+import { toast, Bounce } from "react-toastify";
 
 function GameSlots() {
   const [isLogin, setIsLogin] = useState(false);
@@ -22,8 +23,11 @@ function GameSlots() {
   const [terms, setTerms] = useState("");
   const [showBookingConfirm, setShowBookingConfirm] = useState(false);
   const [agree, setAgree] = useState(false);
-  const filterOptions = ["30min", "1hr"];
-  const filterOptionsDay = ["All", "Morning", "Afternoon", "Evening", "Night"];
+  const filterOptions = useMemo(() => ["30min", "1hr"], []);
+  const filterOptionsDay = useMemo(
+    () => ["All", "Morning", "Afternoon", "Evening", "Night"],
+    []
+  );
   const [selectedDayFilter, setSelectedDayFilter] = useState(0);
   const [selectedSlot, setSelectedSlot] = useState("");
   const [showFeedBackForm, setShowFeedBackForm] = useState(false);
@@ -35,7 +39,7 @@ function GameSlots() {
     if (!match) return null;
 
     const [, time, period] = match;
-    const [hours, minutes] = time.split(":").map(Number);
+    const [hours] = time.split(":").map(Number);
 
     // Convert to 24-hour format
     let convertedHours = hours;
@@ -49,7 +53,7 @@ function GameSlots() {
   };
 
   // Function to assign day filter based on time
-  const assignDayFilter = (timeSlot) => {
+  const assignDayFilter = useCallback((timeSlot) => {
     const hours = parseTime(timeSlot);
 
     if (hours === null) return "Unknown";
@@ -58,7 +62,7 @@ function GameSlots() {
     if (hours >= 12 && hours < 17) return "Afternoon";
     if (hours >= 17 && hours < 20) return "Evening";
     return "Night"; // 20:00 to 4:59
-  };
+  }, []);
 
   // Function to filter slots by duration and time of day
   const filterSlots = (timeSlots, durationOption, dayOption) => {
@@ -69,11 +73,12 @@ function GameSlots() {
       return durationMatch && dayMatch;
     });
   };
-  const fetchAllSlots = async () => {
+  const fetchAllSlots = useCallback(async () => {
     let bookedSlots;
     let allSlots;
     let filter;
     const date = selectedDate.toJSON().slice(0, 10).replace(/-/g, "/");
+    console.log(selectedDate, date);
     const res = await axios.post(
       `${import.meta.env.VITE_API_URL}/Api/filter_time.php`,
       { id: id, date: date },
@@ -122,7 +127,15 @@ function GameSlots() {
         filterOptionsDay[selectedDayFilter]
       )
     );
-  };
+  }, [
+    assignDayFilter,
+    filterOptions,
+    filterOptionsDay,
+    id,
+    selected,
+    selectedDate,
+    selectedDayFilter,
+  ]);
   useEffect(() => {
     const fetchTerms = async () => {
       const res = await axios.get(
@@ -161,14 +174,21 @@ function GameSlots() {
     if (document.cookie) {
       checkLogin();
     }
-  }, [selectedDate, refreshPage, selected, selectedDayFilter]);
+  }, [
+    fetchAllSlots,
+    id,
+    selectedDate,
+    refreshPage,
+    selected,
+    selectedDayFilter,
+  ]);
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchAllSlots();
     }, 5000);
 
     return () => clearInterval(intervalId); // clean up on unmount
-  }, [selectedDate, selected, selectedDayFilter]);
+  }, [fetchAllSlots, selectedDate, selected, selectedDayFilter]);
 
   return (
     <div className='w-full xs:w-[90vw] md:w-[80vw] p-2 xs:p-5 flex flex-col gap-5'>
@@ -243,7 +263,22 @@ function GameSlots() {
                           setShowBookingConfirm(true);
                           setSelectedSlot(slot);
                         } else {
-                          ConfirmLogin();
+                          toast(
+                            ({ closeToast }) => (
+                              <ConfirmLoginToast closeToast={closeToast} />
+                            ),
+                            {
+                              toastId: "login",
+                              position: "top-right",
+                              autoClose: 2000,
+                              hideProgressBar: true,
+                              closeOnClick: false,
+                              pauseOnHover: true,
+                              draggable: false,
+                              theme: "light",
+                              transition: Bounce,
+                            }
+                          );
                         }
                       }
                 }

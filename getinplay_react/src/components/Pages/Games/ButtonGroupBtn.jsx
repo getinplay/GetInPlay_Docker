@@ -1,4 +1,11 @@
-import React from "react";
+import PropTypes from "prop-types";
+
+ButtonGroupBtn.propTypes = {
+  children: PropTypes.node.isRequired,
+  isSelected: PropTypes.bool.isRequired,
+  onClickHandler: PropTypes.func.isRequired,
+  index: PropTypes.number,
+};
 
 function ButtonGroupBtn({ children, isSelected, onClickHandler, index }) {
   return (

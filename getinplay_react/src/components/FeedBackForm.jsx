@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
+
+FeedBackForm.propTypes = {
+  closeForm: PropTypes.func.isRequired,
+};
 
 function FeedBackForm({ closeForm }) {
   const [rating, setRating] = useState(0);
@@ -82,7 +87,7 @@ function FeedBackForm({ closeForm }) {
           pauseOnFocusLoss: false,
         });
       }
-    } catch (error) {
+    } catch {
       toast.error("An error occurred. Please try again later.", {
         pauseOnHover: false,
         pauseOnFocusLoss: false,

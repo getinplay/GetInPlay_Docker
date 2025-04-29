@@ -3,13 +3,27 @@ import { Autoplay, Navigation, Pagination, Mousewheel } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import GamesCarouselCard from "../Cards/GamesCarouselCard";
+import GamesCarouselCard from "../Cards/GamesCarouselCard"; 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSquareCaretLeft,
   faSquareCaretRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+
+GamesCarousel.propTypes = {
+  games: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      half_hour: PropTypes.string.isRequired,
+      hour: PropTypes.string.isRequired,
+      card_image: PropTypes.string.isRequired,
+      slot_image: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
 
 function GamesCarousel({ games }) {
   const [swiperKey, setSwiperKey] = useState(0);

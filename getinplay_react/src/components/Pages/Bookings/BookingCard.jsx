@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import ConfirmDialog from "../../ConfirmDialog";
+import PropTypes from "prop-types";
+
+BookingCard.propTypes = {
+  date: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  game: PropTypes.string.isRequired,
+  slot: PropTypes.string.isRequired,
+  showCancel: PropTypes.bool.isRequired,
+  id: PropTypes.number.isRequired,
+  refreshPage: PropTypes.func.isRequired,
+};
 
 function BookingCard({ date, price, game, slot, showCancel, id, refreshPage }) {
   const API_URL = import.meta.env.VITE_API_URL;

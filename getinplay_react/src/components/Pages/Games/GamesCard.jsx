@@ -1,5 +1,13 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
+GamesCard.propTypes = {
+  children: PropTypes.node.isRequired,
+  src: PropTypes.string.isRequired,
+  half: PropTypes.string.isRequired,
+  full: PropTypes.string.isRequired,
+  gameId: PropTypes.string.isRequired,
+};
 
 function GamesCard({ children, src, half, full, gameId }) {
   return (

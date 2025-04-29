@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,13 +5,8 @@ import {
   faMapLocationDot,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
-import FeedBackForm from "../../FeedBackForm";
 
 function AboutUsPage() {
-  const token = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("authToken="))
-    ?.split("=")[1];
   return (
     <div className='flex flex-col gap-3 justify-between p-5 font-semibold'>
       <h1 className='sm:text-5xl text-4xl p-3 font-bold text-gray-700'>

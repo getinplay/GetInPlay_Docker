@@ -1,15 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import BookingCard from "./BookingCard";
 import ReactPaginate from "react-paginate";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faSearch,
-  faClose,
-  faStar,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faClose, faStar } from "@fortawesome/free-solid-svg-icons";
 import FeedBackForm from "../../FeedBackForm";
 
 function BookingHistoryPage() {
@@ -62,7 +57,7 @@ function BookingHistoryPage() {
     };
 
     fetchBookings();
-  }, [activeTab, refreshPage]);
+  }, [navigate, activeTab, refreshPage]);
 
   // Search filtering function
   const filterBookings = (bookingsList) => {

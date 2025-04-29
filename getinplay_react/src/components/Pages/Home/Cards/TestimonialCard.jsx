@@ -1,6 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
+import PropTypes from "prop-types";
+
+TestimonialCard.propTypes = {
+  fullName: PropTypes.string.isRequired,
+  star: PropTypes.number.isRequired,
+  message: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+};
 
 function capitalizeName(name) {
   let splitNames = name.toLowerCase().split(" ");
@@ -14,7 +22,7 @@ function capitalizeName(name) {
 
 function TestimonialCard({ fullName, star, message, date }) {
   return (
-    <div className='flex flex-col select-none bg-white p-4 rounded-lg shadow-[0_1px_16px_rgba(0,0,0,0.4)] my-7 mx-4 max-sm:h-[250px] h-[300px] md:h-[270px] lg:h-[250px]'>
+    <div className='flex flex-col select-none bg-white p-4 rounded-lg shadow-[0_1px_16px_rgba(0,0,0,0.4)] my-7 mx-4 max-sm:h-[250px] h-[310px] md:h-[300px] lg:h-[270px]'>
       <h3 className='font-medium text-lg text-start'>
         {capitalizeName(fullName)}
       </h3>

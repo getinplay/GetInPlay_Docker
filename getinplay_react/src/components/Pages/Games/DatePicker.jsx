@@ -1,5 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import PropTypes from "prop-types";
+
+DatePicker.propTypes = {
+  selectedDate: PropTypes.instanceOf(Date).isRequired,
+  setSelectedDate: PropTypes.func.isRequired,
+};
 
 function DatePicker({ selectedDate, setSelectedDate }) {
   const [currentPlan, setCurrentPlan] = useState(0);

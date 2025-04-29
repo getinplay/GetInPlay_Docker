@@ -1,5 +1,11 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
+GamesCarouselCard.propTypes = {
+  src: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  gameId: PropTypes.string.isRequired,
+};
 
 function GamesCarouselCard({ src, name, gameId }) {
   return (

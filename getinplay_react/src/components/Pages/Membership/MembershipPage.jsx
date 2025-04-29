@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import MembershipFullCard from "./MembershipFullCard";
 import axios from "axios";
-import ConfirmLogin from "../../ConfirmLogin";
+import ConfirmLoginToast from "../../ConfirmLoginToast";
 import ConfirmDialog from "../../ConfirmDialog";
 import { toast, Bounce } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -77,7 +77,17 @@ function MembershipPage() {
     if (
       !document.cookie.split("; ").find((row) => row.startsWith("authToken="))
     ) {
-      ConfirmLogin();
+      toast(({ closeToast }) => <ConfirmLoginToast closeToast={closeToast} />, {
+        toastId: "login",
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: false,
+        theme: "light",
+        transition: Bounce,
+      });
       return;
     }
     setSelectedPlan(planId);

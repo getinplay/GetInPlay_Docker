@@ -1,4 +1,14 @@
-import React from "react";
+import PropTypes from "prop-types";
+
+MembershipFullCard.propTypes = {
+  amount: PropTypes.number.isRequired,  
+  popular: PropTypes.bool,
+  onClick: PropTypes.func.isRequired,
+  isPlanActive: PropTypes.bool.isRequired,
+  isCurrentPlan: PropTypes.bool.isRequired,
+  children: PropTypes.node.isRequired,
+  features: PropTypes.element.isRequired,
+};
 
 function MembershipFullCard({
   amount,

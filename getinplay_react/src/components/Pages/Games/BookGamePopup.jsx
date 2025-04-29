@@ -1,7 +1,24 @@
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { toast, Bounce } from "react-toastify";
 import axios from "axios";
 import ConfirmDialog from "../../ConfirmDialog";
+import DOMPurify from "dompurify";
+import PropTypes from "prop-types";
+
+BookGamePopup.propTypes = {
+  terms: PropTypes.string.isRequired,
+  hideBooking: PropTypes.func.isRequired,
+  agree: PropTypes.bool.isRequired,
+  setAgree: PropTypes.func.isRequired,
+  slotTime: PropTypes.string.isRequired,
+  gameId: PropTypes.string.isRequired,
+  gameName: PropTypes.string.isRequired,
+  selectedDate: PropTypes.instanceOf(Date).isRequired,
+  setRefreshPage: PropTypes.func.isRequired,
+  setShowFeedBackForm: PropTypes.func.isRequired,
+  showTerms: PropTypes.bool.isRequired,
+  price: PropTypes.string.isRequired,
+};
 
 function BookGamePopup({
   terms,
@@ -75,13 +92,12 @@ function BookGamePopup({
 
     try {
       await toast.promise(
-        new Promise(async (resolve, reject) => {
-          const res = await bookSlot(slotTime, gameId);
+        bookSlot(slotTime, gameId).then((res) => {
           if (res.success) {
             setShowFeedBackForm(true);
-            resolve(res.message);
+            return res.message;
           } else {
-            reject(new Error(res.message));
+            throw new Error(res.message);
           }
         }),
         {
@@ -126,7 +142,7 @@ function BookGamePopup({
 
         <div className='bg-gray-100 overflow-hidden rounded-lg'>
           <p
-            dangerouslySetInnerHTML={{ __html: terms }}
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(terms) }}
             className='p-2 pl-6 overflow-y-auto max-h-50 text-sm sm:text-base xs:text-justify text-gray-600'></p>
         </div>
 

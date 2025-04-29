@@ -37,4 +37,5 @@ const router = (
     </Routes>
   </BrowserRouter>
 );
-ReactDOM.createRoot(root).render(router);
+
+ReactDOM.createRoot(document.getElementById("root")).render(router);

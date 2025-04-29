@@ -1,4 +1,11 @@
 import { NavLink } from "react-router-dom";
+import PropTypes from "prop-types";
+
+NavBarLink.propTypes = {
+  children: PropTypes.node.isRequired,
+  toLink: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 
 function NavBarLink({ children, toLink, onClick }) {
   return (

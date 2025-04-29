@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
@@ -125,7 +125,7 @@ function UpdatePasswordPage() {
       navigate("/");
     }
     return;
-  }, []);
+  }, [navigate]);
 
   return (
     <div className='sm:w-lg max-sm:max-w-max w-full mt-5 rounded-lg p-4'>
