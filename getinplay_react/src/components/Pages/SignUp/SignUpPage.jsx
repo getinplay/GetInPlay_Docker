@@ -370,7 +370,6 @@ function SignUpPage() {
           </p>
         </form>
       </div>
-      <ToastContainer />
     </>
   );
 }

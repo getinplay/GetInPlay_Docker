@@ -171,7 +171,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             // Generate the JWT token
             $jwt = JWT::encode($payload, $secret_key,'HS256');
-        sendEmail($email, $name, $username, $password_a);
+        sendEmail($email, $name, $username_a, $password_a);
         echo json_encode(['success' => true , 'message' => 'Registration successful.','token' => $jwt]);
         
     } else {
